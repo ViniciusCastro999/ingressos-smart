@@ -66,7 +66,14 @@ object BrandIcons {
         )
     }
     val Refresh by lazy {
-        strokeIcon("refresh", "M20 7v5h-5M4 17v-5h5", "M6.1 9A7 7 0 0 1 18.8 7M17.9 15A7 7 0 0 1 5.2 17")
+        // Arrowheads at opposite corners (top-right / bottom-left) so they never crowd each other.
+        strokeIcon(
+            "refresh",
+            "M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8",
+            "M21 3v5h-5",
+            "M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16",
+            "M8 16H3v5",
+        )
     }
     val Chevron by lazy { strokeIcon("chevron", "M9 18l6-6-6-6") }
     val Plus by lazy { strokeIcon("plus", "M12 6v12M6 12h12") }
