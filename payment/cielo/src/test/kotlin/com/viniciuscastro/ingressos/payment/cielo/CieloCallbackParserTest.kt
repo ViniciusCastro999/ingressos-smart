@@ -14,8 +14,45 @@ class CieloCallbackParserTest {
     private fun callback(json: String) = "ingressos://payment-result?response=" +
         CieloProtocol.encodeQueryValue(CieloProtocol.encodeBase64(json)) + "&responsecode=0"
 
-    private fun resource(name: String): String =
-        checkNotNull(javaClass.getResource("/cielo/$name")) { "Missing $name" }.readText().trim()
+    private fun resource(name: String): String = rawResource(name).trim()
+
+    /** Exact bytes, trailing newline included: the official emulator ends its Base64 with one. */
+    private fun rawResource(name: String): String =
+        checkNotNull(javaClass.getResource("/cielo/$name")) { "Missing $name" }.readText()
+
+    @Test
+    fun `parses the approval sent by the official Cielo emulator 1_61_8`() {
+        // Captured from ActivityTaskManager on an Android 10 AVD: Base64 wrapped every 76 chars with raw '\n',
+        // not percent-encoded, and paidAmount = 0 although the order is PAID.
+        val result = assertIs<PaymentResult.Approved>(parser.parse(rawResource("emulator-1.61.8-success.uri")))
+
+        assertEquals("4cac1dca-7df0-4923-aef9-2d7929cbcf3c", result.reference)
+        with(result.receipt) {
+            assertEquals("7b5a82e1-00ce-4fb4-ad5f-47e2843bb079", terminalOrderId)
+            assertEquals(Money(12000), paidAmount)
+            assertEquals("bHYsyg", authorizationCode)
+            assertEquals("NvOE9f", nsu)
+            assertEquals("mock_terminal", terminalId)
+            assertEquals(1, installments)
+        }
+    }
+
+    @Test
+    fun `parses the cancellation sent by the official Cielo emulator 1_61_8`() {
+        assertEquals(
+            PaymentResult.Canceled(null, 1, "CANCELADO PELO USUÁRIO"),
+            parser.parse(rawResource("emulator-1.61.8-canceled.uri")),
+        )
+    }
+
+    @Test
+    fun `parses the error sent by the official Cielo emulator 1_61_8 without responsecode`() {
+        // The "Erro" scenario omits the responsecode parameter entirely.
+        assertEquals(
+            PaymentResult.Failed(null, 2, "Falha no processo de pagamento"),
+            parser.parse(rawResource("emulator-1.61.8-error.uri")),
+        )
+    }
 
     @Test
     fun `parses the success example published in the Cielo Smart docs`() {

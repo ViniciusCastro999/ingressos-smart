@@ -105,6 +105,7 @@ Achados da pesquisa e da verificação, e a decisão que cada um gerou:
 | 9 | FAQ: `cs_integration_type=uri` exigido pela Cielo Store | `meta-data` no manifest |
 | 10 | `statusCode` 0 = Pix, 1 = autorizado, 2 = cancelamento | Só pagamentos 0/1 contam como aprovação |
 | 11 | Protótipo da identidade separa resumo e pagamento em telas e usa fotos remotas e DM Sans via Google Fonts | Mantido o checkout único (mínimo de passos), cards sem foto (offline-first) e fonte parametrizada para terminais sem Google Play Services ([ADR-0009](../adr/0009-design-system-identidade-visual.md)) |
+| 12 | Emulador Cielo oficial 1.61.8 (AVD Android 10): aprovação ecoa o `reference`, Base64 com `\n` cru a cada 76 caracteres, `paidAmount: 0` num pedido `PAID`, e o cenário "Erro" vem **sem** `responsecode` | Nenhuma mudança: o parser já decidia pelo JSON, tolerava `\n` e somava os pagamentos autorizados. Os 3 callbacks reais viraram testes de contrato |
 
 ## 6. Erros da IA detectados e corrigidos (verificação crítica)
 
@@ -124,7 +125,11 @@ Estas correções mostram por que a saída da IA foi verificada, e não aceita c
 
 ## 7. Evidências de verificação
 
-- `./gradlew test`: **66 testes** verdes em 5 módulos.
+- `./gradlew test`: **69 testes** verdes em 5 módulos.
+- Execução no **Emulador Cielo oficial** (v1.61.8, AVD Android 10, flavor `cielo`), 2 ingressos de R$ 60,00:
+  Sucesso → `APPROVED` (R$ 120,00, 2 ingressos), Cancelado → `CANCELED` (código 1), Erro → `FAILED` (código 2).
+  O callback cru foi lido nas linhas `START` do `ActivityTaskManager` (`adb logcat`) e salvo como fixture de teste
+  (`payment/cielo/src/test/resources/cielo/emulator-1.61.8-*.uri`). Capturas `docs/screenshots/cielo-*.png`.
 - Execução no emulador (flavor `simulator`): aprovação, negação, cancelamento, terminal sem resposta com liberação, bloqueio de venda concorrente, callback repetido (ignorado), callback forjado (rejeitado) e **morte do processo durante o pagamento** (resultado gravado após o Android recriar o app). Capturas em [`docs/screenshots`](../screenshots).
 - Telemetria observada no `logcat` durante os testes, por exemplo:
   `PaymentDispatched` → `PaymentResolved(APPROVED)`, `CallbackIgnored(APPROVED)`, `CallbackUnmatched(forged-reference)`, `ConcurrentPaymentBlocked`, `PurchaseReleased`.
@@ -145,5 +150,5 @@ Responsabilidade do desenvolvedor antes da entrega e na apresentação:
 |---|---|
 | Módulos Gradle | 5 (`app`, `domain`, `data`, `payment:cielo`, `payment:simulator`) |
 | Arquivos Kotlin | ~85 (~5.900 linhas, das quais ~1.300 de teste) |
-| Testes automatizados | 66 |
+| Testes automatizados | 69 |
 | ADRs / Specs | 9 / 3 |

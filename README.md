@@ -74,7 +74,7 @@ fosse o app da Cielo, com as opções *Aprovar*, *Aprovar com valor divergente*,
 ### Testes
 
 ```bash
-./gradlew test                     # 66 testes unitários (JVM + Robolectric), todos os módulos
+./gradlew test                     # 69 testes unitários (JVM + Robolectric), todos os módulos
 ./gradlew lintSimulatorDebug       # Android Lint
 ```
 
@@ -82,10 +82,23 @@ fosse o app da Cielo, com as opções *Aprovar*, *Aprovar com valor divergente*,
 
 | O quê | Como foi validado |
 |---|---|
-| Regras de negócio, idempotência, máquina de estados | 66 testes automatizados. O teste de duplo toque foi checado por "mutação": falha se o lock for removido |
-| Parser da resposta da Cielo | Testado com os **payloads de exemplo publicados na documentação oficial** (sucesso e erro) |
+| Regras de negócio, idempotência, máquina de estados | 69 testes automatizados. O teste de duplo toque foi checado por "mutação": falha se o lock for removido |
+| Parser da resposta da Cielo | Testado com os **payloads de exemplo publicados na documentação oficial** (sucesso e erro) e com os **3 callbacks reais capturados do Emulador Cielo oficial** (`payment/cielo/src/test/resources/cielo/emulator-1.61.8-*.uri`) |
 | Fluxo ponta a ponta (flavor `simulator`) | Executado no emulador Android (API 37), também após aplicar a identidade visual: aprovação, negação, cancelamento, terminal sem resposta, pagamento concorrente bloqueado, callback repetido, callback forjado e **morte do processo do app durante o pagamento** |
-| Flavor `cielo` contra o Emulador Cielo/terminal físico | **Não executado neste ambiente** (o emulador oficial exige AVD Android 7.1/10). O formato de request/response segue a documentação e o sample oficial (`Uri.Builder` + Base64 `NO_WRAP`) |
+| Flavor `cielo` contra o **Emulador Cielo oficial** (v1.61.8, AVD Android 10 / API 29) | **Executado** em 15/10/2026: 2 ingressos de R$ 60,00 nos três cenários do emulador. **Sucesso** → `APPROVED`, R$ 120,00, 2 ingressos com QR; **Cancelado** → `CANCELED` (código 1); **Erro** → `FAILED` (código 2). Nenhuma mudança de código foi necessária |
+| Terminal físico Cielo Smart | Não executado (sem acesso a terminal) |
+
+O que o emulador oficial confirmou (e que os testes agora fixam):
+
+- A aprovação **ecoa o `reference`** (= id da compra), então a correlação e a idempotência funcionam como projetado.
+- O Base64 da resposta vem **quebrado a cada 76 caracteres com `\n` cru** (sem percent-encoding) e com `\n` final, o que o decoder tolerante já tratava.
+- `paidAmount` vem **`0`** num pedido `PAID`; o valor pago sai da soma dos pagamentos autorizados (`amount` = 12000), que é o fallback do parser.
+- `responsecode=0` no sucesso e no cancelamento; no cenário **Erro** o parâmetro `responsecode` **nem vem**. O parser decide pelo JSON, então nada muda.
+- Erro e cancelamento chegam sem `reference` (`{code, reason}`) e resolvem a única compra pendente, como previsto.
+
+| Emulador Cielo: checkout | Cenários | Sucesso | Cancelado | Erro |
+|---|---|---|---|---|
+| ![Checkout Cielo](docs/screenshots/cielo-01-emulador-checkout.png) | ![Cenários](docs/screenshots/cielo-02-emulador-cenarios.png) | ![Aprovado](docs/screenshots/cielo-03-aprovado.png) | ![Cancelado](docs/screenshots/cielo-04-cancelado.png) | ![Erro](docs/screenshots/cielo-05-erro.png) |
 
 ---
 
@@ -313,7 +326,7 @@ Defesa em camadas: cada camada cobre um tipo diferente de "reenvio de ação".
 
 ## 8. Testes
 
-**66 testes**, todos executáveis com `./gradlew test`. Uso **fakes em vez de mocks** ([ADR-0008](docs/adr/0008-fakes-em-vez-de-mocks.md)).
+**69 testes**, todos executáveis com `./gradlew test`. Uso **fakes em vez de mocks** ([ADR-0008](docs/adr/0008-fakes-em-vez-de-mocks.md)).
 Eles ficam em `domain/src/testFixtures` e são reutilizados por todos os módulos.
 
 | Módulo | Suites | O que garante |

@@ -43,10 +43,18 @@ Robustez obrigatória:
 - Decoder tolerante a `\n`/`\r` (Base64 com quebras de linha) e a `+` convertido em espaço.
 - Campos desconhecidos ignorados; todos os campos opcionais.
 
+Observado no Emulador Cielo oficial 1.61.8 (Android 10), que confirma as regras acima:
+- Base64 da resposta com `\n` cru a cada 76 caracteres e `\n` final (sem percent-encoding).
+- Aprovação: `status: PAID`, `reference` ecoado, `paidAmount: 0` (vale a soma dos `amount` autorizados),
+  `paymentFields.statusCode: "1"`.
+- Cancelado: `{code:1}` com `responsecode=0`. Erro: `{code:2}` **sem** o parâmetro `responsecode`.
+- O `lio://payment` é atendido pelo pacote `br.com.cielosmart.orderservice` (activity
+  `com.cielo.lio.uriappclient.activities.CheckoutActivity`); no Android 11+ a `<queries>` por intent `lio` cobre isso.
+
 ## Manifest
 - `<queries>`: pacote `com.ads.lio.uriappclient` e intents `VIEW` com esquema `lio` (Android 11+).
 - `<meta-data android:name="cs_integration_type" android:value="uri"/>` (Cielo Store).
 - Callback em `MainActivity` (`singleTask`), intent-filter `VIEW` + `DEFAULT`, **sem** `BROWSABLE`.
 
 ## Testes de contrato
-`CieloCallbackParserTest` (payloads oficiais da documentação), `CieloDeepLinkFactoryTest`, `TerminalSimulatorTest` (ida e volta).
+`CieloCallbackParserTest` (payloads oficiais da documentação e callbacks reais do Emulador Cielo 1.61.8), `CieloDeepLinkFactoryTest`, `TerminalSimulatorTest` (ida e volta).
