@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ingressos Smart</string>
+    <string name="navigate_back">Voltar</string>
+
+    <!-- Brand -->
+    <string name="brand_wordmark" translatable="false">cielo</string>
+    <string name="brand_smart_pill">Smart</string>
+    <string name="nav_home">Início</string>
+    <string name="nav_tickets">Ingressos</string>
+
+    <!-- Events -->
+    <string name="events_eyebrow">Descubra perto de você</string>
+    <string name="events_title">Seu próximo\nevento começa aqui.</string>
+    <string name="events_search_placeholder">Buscar eventos ou locais</string>
+    <string name="events_search_clear">Limpar busca</string>
+    <string name="events_section">Próximos eventos</string>
+    <plurals name="events_count">
+        <item quantity="one">%d evento</item>
+        <item quantity="other">%d eventos</item>
+    </plurals>
+    <string name="events_empty">Nenhum evento disponível no momento.</string>
+    <string name="events_search_empty">Nenhum evento encontrado para “%s”.</string>
+    <string name="events_error">Não foi possível carregar os eventos.</string>
+    <string name="event_sold_out">Esgotado</string>
+    <plurals name="event_last_tickets">
+        <item quantity="one">Último ingresso</item>
+        <item quantity="other">Últimos %d ingressos</item>
+    </plurals>
+    <plurals name="event_available">
+        <item quantity="one">%d disponível</item>
+        <item quantity="other">%d disponíveis</item>
+    </plurals>
+    <string name="pending_banner_title">Pagamento aguardando o terminal</string>
+    <string name="pending_banner_body">Novas vendas ficam bloqueadas até o terminal responder.</string>
+    <string name="pending_banner_action">Ver</string>
+
+    <!-- Checkout -->
+    <string name="checkout_title">Comprar ingressos</string>
+    <string name="checkout_choose_tickets">Escolha seus ingressos</string>
+    <string name="checkout_ticket_name">Ingresso</string>
+    <string name="checkout_quantity_limit">Máximo de %d por compra</string>
+    <string name="checkout_decrease">Diminuir quantidade</string>
+    <string name="checkout_increase">Aumentar quantidade</string>
+    <string name="checkout_how_to_pay">Como deseja pagar?</string>
+    <string name="payment_method_terminal">Na maquininha</string>
+    <string name="payment_method_terminal_hint">Crédito, débito ou Pix, escolhido no terminal</string>
+    <string name="payment_method_credit">Crédito</string>
+    <string name="payment_method_credit_hint">Cartão de crédito à vista</string>
+    <string name="payment_method_debit">Débito</string>
+    <string name="payment_method_debit_hint">Cartão de débito</string>
+    <string name="payment_method_pix">Pix</string>
+    <string name="payment_method_pix_hint">QR Code na tela da Cielo Smart</string>
+    <string name="checkout_secure_note">Compra segura processada pela Cielo</string>
+    <string name="checkout_total">Total</string>
+    <string name="checkout_pay">Cobrar na Cielo Smart</string>
+    <string name="checkout_sending">Enviando ao terminal</string>
+    <string name="checkout_event_not_found">Evento não encontrado.</string>
+    <string name="message_view">Ver</string>
+    <string name="message_another_payment">Já existe um pagamento aguardando o terminal.</string>
+    <string name="message_sold_out">Ingressos esgotados para este evento.</string>
+    <string name="message_invalid_quantity">Escolha entre %1$d e %2$d ingressos.</string>
+    <string name="message_event_unavailable">Este evento não está mais disponível.</string>
+    <string name="message_unexpected_error">Não foi possível iniciar o pagamento. Tente novamente.</string>
+    <string name="message_unmatched_callback">O terminal enviou uma resposta que não corresponde a nenhuma compra. Nada foi registrado.</string>
+
+    <!-- Receipt -->
+    <string name="receipt_title">Comprovante</string>
+    <string name="receipt_not_found">Compra não encontrada.</string>
+    <string name="status_pending">Aguardando pagamento</string>
+    <string name="status_approved">Pagamento aprovado!</string>
+    <string name="status_declined">Pagamento não aprovado</string>
+    <string name="status_canceled">Pagamento cancelado</string>
+    <string name="status_failed">Falha no pagamento</string>
+    <string name="status_unconfirmed">Pagamento não confirmado</string>
+    <string name="status_chip_pending">Pendente</string>
+    <string name="status_chip_approved">Aprovada</string>
+    <string name="status_chip_declined">Negada</string>
+    <string name="status_chip_canceled">Cancelada</string>
+    <string name="status_chip_failed">Falhou</string>
+    <string name="status_chip_unconfirmed">Não confirmada</string>
+    <string name="receipt_copy_pending">Insira, aproxime ou passe o cartão na Cielo Smart. Esta tela se atualiza sozinha quando o terminal responder.</string>
+    <string name="receipt_copy_approved">Tudo certo. Seus ingressos já estão disponíveis.</string>
+    <string name="receipt_copy_declined">A transação foi recusada. Tente novamente ou use outro cartão.</string>
+    <string name="receipt_copy_canceled">A cobrança foi interrompida e nenhum valor foi debitado.</string>
+    <string name="receipt_copy_failed">Não foi possível concluir o pagamento na Cielo Smart. Nenhum ingresso foi emitido.</string>
+    <string name="reason_no_terminal_response">O terminal não retornou. Confira no terminal se houve cobrança antes de tentar novamente.</string>
+    <string name="reason_amount_mismatch">O terminal aprovou %1$s, mas o total da compra é %2$s. Nenhum ingresso foi emitido: confira e estorne no terminal se necessário.</string>
+    <string name="reason_terminal_unavailable">O aplicativo de pagamento da Cielo não foi encontrado neste dispositivo. Nada foi cobrado.</string>
+    <string name="reason_terminal">Retorno do terminal: %1$s</string>
+    <string name="reason_terminal_with_code">Retorno do terminal: %1$s (código %2$d)</string>
+    <string name="receipt_release">O terminal não respondeu</string>
+    <string name="release_dialog_title">Liberar este pagamento?</string>
+    <string name="release_dialog_body">Use apenas se o terminal não retornou (por exemplo, foi desligado). A compra ficará como “não confirmada” e novas vendas serão liberadas. Antes de cobrar de novo, confira no terminal se houve cobrança.</string>
+    <string name="release_dialog_confirm">Liberar</string>
+    <string name="release_dialog_dismiss">Continuar aguardando</string>
+    <string name="receipt_valid_badge">INGRESSO VÁLIDO</string>
+    <string name="receipt_ticket_label">Ingresso %1$d de %2$d</string>
+    <string name="receipt_ticket_qr">QR Code do ingresso %d</string>
+    <string name="receipt_ticket_present">Apresente este QR Code na entrada</string>
+    <string name="receipt_protect_title">Proteja seu ingresso</string>
+    <string name="receipt_protect_body">Não compartilhe este QR Code. Ele é único e válido para apenas uma entrada.</string>
+    <string name="receipt_section_purchase">Resumo do pedido</string>
+    <string name="receipt_quantity_line">%1$d× Ingresso (%2$s)</string>
+    <string name="receipt_event">Evento</string>
+    <string name="receipt_date">Data</string>
+    <string name="receipt_venue">Local</string>
+    <string name="receipt_method">Forma de pagamento</string>
+    <string name="receipt_order">Pedido</string>
+    <string name="receipt_purchased_at">Data da compra</string>
+    <string name="receipt_total">Total</string>
+    <string name="receipt_section_payment">Dados do pagamento</string>
+    <string name="receipt_paid_amount">Valor pago</string>
+    <string name="receipt_authorization">Autorização</string>
+    <string name="receipt_nsu">NSU</string>
+    <string name="receipt_card">Cartão</string>
+    <string name="receipt_product">Produto</string>
+    <string name="receipt_terminal">Terminal</string>
+    <string name="receipt_terminal_order">Pedido Cielo</string>
+    <string name="receipt_retry">Tentar novamente</string>
+    <string name="receipt_done">Voltar ao início</string>
+
+    <!-- Purchases -->
+    <string name="purchases_eyebrow">Seu histórico</string>
+    <string name="purchases_title">Meus ingressos</string>
+    <string name="purchases_empty">Nenhuma compra registrada ainda.</string>
+    <plurals name="purchase_tickets">
+        <item quantity="one">%d ingresso</item>
+        <item quantity="other">%d ingressos</item>
+    </plurals>
+</resources>
