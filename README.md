@@ -1,7 +1,7 @@
 # Ingressos Smart
 
 App Android (Kotlin + Jetpack Compose) para **venda de ingressos de eventos locais** com pagamento pela
-**Cielo Smart** (Deep Link `lio://`). Foco em fluxo de compra curto, **zero cobrança duplicada**,
+**Cielo Smart** (Deep Link `lio://`). Com foco em fluxo de compra curto, **zero cobrança duplicada**,
 tratamento explícito de erros e testes nos cenários críticos.
 
 | Eventos | Checkout | Terminal (simulador) | Pagamento aprovado | Ingressos com QR |
