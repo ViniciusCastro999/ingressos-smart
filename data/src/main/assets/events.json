@@ -1,0 +1,62 @@
+[
+  {
+    "id": "evt-auto-compadecida",
+    "title": "O Auto da Compadecida",
+    "description": "Montagem teatral do clássico de Ariano Suassuna.",
+    "venue": "Teatro Municipal",
+    "city": "Rio de Janeiro",
+    "startsAt": "2026-10-30T20:00:00-03:00",
+    "priceCents": 15000,
+    "availableTickets": 0
+  },
+  {
+    "id": "evt-stand-up",
+    "title": "Noite de Stand-up",
+    "description": "Quatro comediantes da cena paulistana em uma noite de humor.",
+    "venue": "Teatro Gazeta",
+    "city": "São Paulo",
+    "startsAt": "2026-11-07T21:30:00-03:00",
+    "priceCents": 6000,
+    "availableTickets": 80
+  },
+  {
+    "id": "evt-jazz-ibirapuera",
+    "title": "Festival de Jazz do Ibirapuera",
+    "description": "Quartetos e big bands em uma noite ao ar livre.",
+    "venue": "Auditório Ibirapuera",
+    "city": "São Paulo",
+    "startsAt": "2026-11-14T20:00:00-03:00",
+    "priceCents": 12000,
+    "availableTickets": 150
+  },
+  {
+    "id": "evt-sabores-brasil",
+    "title": "Feira Sabores do Brasil",
+    "description": "Gastronomia regional, música ao vivo e oficinas para a família.",
+    "venue": "Parque Villa-Lobos",
+    "city": "São Paulo",
+    "startsAt": "2026-11-21T11:00:00-03:00",
+    "priceCents": 3500,
+    "availableTickets": 500
+  },
+  {
+    "id": "evt-sinfonica-cinema",
+    "title": "Sinfônica: Clássicos do Cinema",
+    "description": "Trilhas sonoras icônicas interpretadas por orquestra completa.",
+    "venue": "Sala São Paulo",
+    "city": "São Paulo",
+    "startsAt": "2026-12-05T19:00:00-03:00",
+    "priceCents": 9500,
+    "availableTickets": 200
+  },
+  {
+    "id": "evt-rock-praca",
+    "title": "Rock na Praça",
+    "description": "Bandas independentes mineiras. Últimos ingressos!",
+    "venue": "Praça da Liberdade",
+    "city": "Belo Horizonte",
+    "startsAt": "2026-12-12T18:00:00-03:00",
+    "priceCents": 8000,
+    "availableTickets": 3
+  }
+]

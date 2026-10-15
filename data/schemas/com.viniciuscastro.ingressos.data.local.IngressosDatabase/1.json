@@ -1,0 +1,281 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "2f3f864655e4fdc6bdfb9ac55ead3c6f",
+    "entities": [
+      {
+        "tableName": "events",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `title` TEXT NOT NULL, `description` TEXT NOT NULL, `venue` TEXT NOT NULL, `city` TEXT NOT NULL, `starts_at` INTEGER NOT NULL, `price_cents` INTEGER NOT NULL, `available_tickets` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "venue",
+            "columnName": "venue",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "city",
+            "columnName": "city",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startsAtEpochMillis",
+            "columnName": "starts_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "priceCents",
+            "columnName": "price_cents",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "availableTickets",
+            "columnName": "available_tickets",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        }
+      },
+      {
+        "tableName": "purchases",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `event_id` TEXT NOT NULL, `event_title` TEXT NOT NULL, `event_venue` TEXT NOT NULL, `event_starts_at` INTEGER NOT NULL, `quantity` INTEGER NOT NULL, `unit_price_cents` INTEGER NOT NULL, `payment_method` TEXT, `status` TEXT NOT NULL, `created_at` INTEGER NOT NULL, `updated_at` INTEGER NOT NULL, `reason_type` TEXT, `reason_code` INTEGER, `reason_message` TEXT, `receipt_terminal_order_id` TEXT, `receipt_paid_amount_cents` INTEGER, `receipt_authorization_code` TEXT, `receipt_nsu` TEXT, `receipt_card_brand` TEXT, `receipt_card_mask` TEXT, `receipt_product_name` TEXT, `receipt_installments` INTEGER, `receipt_terminal_id` TEXT, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "eventId",
+            "columnName": "event_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "eventTitle",
+            "columnName": "event_title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "eventVenue",
+            "columnName": "event_venue",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "eventStartsAtEpochMillis",
+            "columnName": "event_starts_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "quantity",
+            "columnName": "quantity",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "unitPriceCents",
+            "columnName": "unit_price_cents",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "paymentMethod",
+            "columnName": "payment_method",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "status",
+            "columnName": "status",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAtEpochMillis",
+            "columnName": "created_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updatedAtEpochMillis",
+            "columnName": "updated_at",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "reasonType",
+            "columnName": "reason_type",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "reasonCode",
+            "columnName": "reason_code",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "reasonMessage",
+            "columnName": "reason_message",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "receipt.terminalOrderId",
+            "columnName": "receipt_terminal_order_id",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "receipt.paidAmountCents",
+            "columnName": "receipt_paid_amount_cents",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "receipt.authorizationCode",
+            "columnName": "receipt_authorization_code",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "receipt.nsu",
+            "columnName": "receipt_nsu",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "receipt.cardBrand",
+            "columnName": "receipt_card_brand",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "receipt.cardMask",
+            "columnName": "receipt_card_mask",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "receipt.productName",
+            "columnName": "receipt_product_name",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "receipt.installments",
+            "columnName": "receipt_installments",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "receipt.terminalId",
+            "columnName": "receipt_terminal_id",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_purchases_status",
+            "unique": false,
+            "columnNames": [
+              "status"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_purchases_status` ON `${TABLE_NAME}` (`status`)"
+          }
+        ]
+      },
+      {
+        "tableName": "tickets",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `purchase_id` TEXT NOT NULL, `event_id` TEXT NOT NULL, `number` INTEGER NOT NULL, PRIMARY KEY(`id`), FOREIGN KEY(`purchase_id`) REFERENCES `purchases`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "purchaseId",
+            "columnName": "purchase_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "eventId",
+            "columnName": "event_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "number",
+            "columnName": "number",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_tickets_purchase_id",
+            "unique": false,
+            "columnNames": [
+              "purchase_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_tickets_purchase_id` ON `${TABLE_NAME}` (`purchase_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "purchases",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "purchase_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '2f3f864655e4fdc6bdfb9ac55ead3c6f')"
+    ]
+  }
+}
