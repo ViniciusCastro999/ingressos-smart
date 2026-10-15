@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <!--
+            Answers "lio-sim://payment" with the same request/response contract as Cielo Smart's
+            "lio://payment". Its own process and task affinity make it behave like the external payment
+            app: the integrating app can even be killed while it is open (process-death scenario).
+        -->
+        <activity
+            android:name=".TerminalSimulatorActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:label="Simulador Cielo Smart"
+            android:process=":terminal"
+            android:taskAffinity="com.viniciuscastro.ingressos.terminal.simulator"
+            android:theme="@android:style/Theme.Material.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data
+                    android:host="payment"
+                    android:scheme="lio-sim" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
