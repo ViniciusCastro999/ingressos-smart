@@ -48,6 +48,7 @@ O app tem duas variantes. **O código de integração é o mesmo nas duas.** Mud
 
 ### Caminho rápido (simulador, qualquer emulador)
 
+Com o emulador aberto basta executar o comando:
 ```bash
 ./gradlew :app:installSimulatorDebug
 ```
