@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Android 11+ package visibility: lets the app resolve Cielo's UriApp (lio:// deep links). -->
+    <queries>
+        <package android:name="com.ads.lio.uriappclient" />
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="lio" />
+        </intent>
+    </queries>
+</manifest>
