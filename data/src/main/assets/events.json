@@ -58,5 +58,105 @@
     "startsAt": "2026-12-12T18:00:00-03:00",
     "priceCents": 8000,
     "availableTickets": 3
+  },
+  {
+    "id": "evt-festival-eletronico",
+    "title": "Neon Festival",
+    "description": "Uma noite de música eletrônica com DJs nacionais, luzes e experiências imersivas.",
+    "venue": "Arena Anhembi",
+    "city": "São Paulo",
+    "startsAt": "2026-12-19T22:00:00-03:00",
+    "priceCents": 18000,
+    "availableTickets": 350
+  },
+  {
+    "id": "evt-comedia-mineira",
+    "title": "Comédia de Minas",
+    "description": "Um espetáculo de humor com histórias e situações típicas do cotidiano mineiro.",
+    "venue": "Teatro Sesi",
+    "city": "Belo Horizonte",
+    "startsAt": "2027-01-09T20:00:00-03:00",
+    "priceCents": 5500,
+    "availableTickets": 120
+  },
+  {
+    "id": "evt-festival-gastronomico",
+    "title": "Festival Gastronômico Sabores da Serra",
+    "description": "Pratos artesanais, cervejas locais, música ao vivo e experiências gastronômicas.",
+    "venue": "Parque Municipal",
+    "city": "Pouso Alegre",
+    "startsAt": "2027-01-16T12:00:00-03:00",
+    "priceCents": 4000,
+    "availableTickets": 800
+  },
+  {
+    "id": "evt-show-pop",
+    "title": "Luzes do Pop",
+    "description": "Uma noite de grandes sucessos pop com performances, bailarinos e produção visual especial.",
+    "venue": "Espaço Unimed",
+    "city": "São Paulo",
+    "startsAt": "2027-01-23T21:00:00-03:00",
+    "priceCents": 22000,
+    "availableTickets": 45
+  },
+  {
+    "id": "evt-teatro-misterio",
+    "title": "O Mistério da Última Noite",
+    "description": "Uma peça de suspense interativa em que o público acompanha a investigação de um crime.",
+    "venue": "Teatro Itália",
+    "city": "São Paulo",
+    "startsAt": "2027-02-06T19:30:00-03:00",
+    "priceCents": 7500,
+    "availableTickets": 90
+  },
+  {
+    "id": "evt-corrida-noturna",
+    "title": "Night Run Brasil",
+    "description": "Corrida noturna de 5 km com percurso iluminado, música e medalha para os participantes.",
+    "venue": "Lagoa da Pampulha",
+    "city": "Belo Horizonte",
+    "startsAt": "2027-02-13T19:00:00-03:00",
+    "priceCents": 6500,
+    "availableTickets": 600
+  },
+  {
+    "id": "evt-rock-classicos",
+    "title": "Rock Legends ao Vivo",
+    "description": "Uma homenagem aos maiores clássicos do rock com banda ao vivo e repertório inesquecível.",
+    "venue": "Arena Hall",
+    "city": "Belo Horizonte",
+    "startsAt": "2027-02-20T20:30:00-03:00",
+    "priceCents": 11000,
+    "availableTickets": 0
+  },
+  {
+    "id": "evt-feira-geek",
+    "title": "Geek Experience 2027",
+    "description": "Cosplay, games, campeonatos, artistas independentes e atrações para fãs da cultura geek.",
+    "venue": "Expo Center Norte",
+    "city": "São Paulo",
+    "startsAt": "2027-03-06T10:00:00-03:00",
+    "priceCents": 5000,
+    "availableTickets": 1200
+  },
+  {
+    "id": "evt-acustico-brasil",
+    "title": "Vozes do Brasil — Acústico",
+    "description": "Uma apresentação intimista com versões acústicas de clássicos da música brasileira.",
+    "venue": "Teatro Bradesco",
+    "city": "São Paulo",
+    "startsAt": "2027-03-13T20:00:00-03:00",
+    "priceCents": 13500,
+    "availableTickets": 8
+  },
+  {
+    "id": "evt-feira-artesanato",
+    "title": "Feira Criativa Sul de Minas",
+    "description": "Artesanato, produtos autorais, gastronomia regional e oficinas para todas as idades.",
+    "venue": "Centro de Eventos",
+    "city": "Pouso Alegre",
+    "startsAt": "2027-03-20T10:00:00-03:00",
+    "priceCents": 2500,
+    "availableTickets": 250
   }
 ]
